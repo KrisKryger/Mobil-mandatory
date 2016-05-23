@@ -170,7 +170,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    // Her kommer teksten til share
     public String convertListToString()
     {
         String result = "";
@@ -179,7 +178,7 @@ public class MainActivity extends AppCompatActivity {
             Product p = (Product) fireAdapter.getItem(i);
             String sp =p.toString();
             result += p.getQuantity()+" "+p.getName() + "\n";
-             Log.d("her er listen", sp);
+             Log.d("Her er listen", sp);
         }
         return result;
     }
@@ -222,7 +221,7 @@ public class MainActivity extends AppCompatActivity {
                 SharedPreferences prefs = getSharedPreferences("my_prefs", MODE_PRIVATE);
                 String navn = prefs.getString("name", "");
                 String textToShare =navn+"'s Huskeseddel. Du skal huske "+ totalItems +" ting:\n" +convertListToString();
-                intentshare.putExtra(Intent.EXTRA_TEXT, textToShare);//add the text to t
+                intentshare.putExtra(Intent.EXTRA_TEXT, textToShare);
                 intentshare.putExtra(android.content.Intent.EXTRA_SUBJECT, "HuskeSeddel");
                 startActivity(intentshare);
             }
@@ -300,7 +299,7 @@ public class MainActivity extends AppCompatActivity {
         AppIndex.AppIndexApi.end(client, viewAction);
         client.disconnect();
 
-        //Her kommer baggrundsindstillingerne
+        //Her kommer baggrunds indstillingerne
     }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -315,9 +314,7 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences prefs = getSharedPreferences("my_prefs", MODE_PRIVATE);
         String theme = prefs.getString("theme", "");
         String name = prefs.getString("name", "");
-        Toast.makeText(
-                this,
-                name + "Baggrundsfarven er nu "+  theme, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, name + " Baggrundsfarven er nu "+  theme, Toast.LENGTH_SHORT).show();
         LinearLayout ln = (LinearLayout) this.findViewById(R.id.layout);
         ln.setBackgroundColor(Color.rgb(255, 255, 255));
         if(theme.equals("Hvid")){
